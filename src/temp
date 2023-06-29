@@ -13,17 +13,8 @@ function createDefault() {
     if (!existsSync(`/Users/${userId}/.npmrcs/default`)) {
         // Execute npmrc to create default file.
         execSync('npx npmrc -c default', { stdio: 'inherit' });
-
-        writeFileSync(`/Users/${userId}/.npmrcs/default`, defaultNpmrcTemplate);
-        const defaultNpmrOnDisk = readFileSync(`/Users/${userId}/.npmrcs/default`);
-        console.log('dd', defaultNpmrOnDisk.toString());
+        writeFileSync(`/Users/${userId}/.npmrcs/default`, defaultNpmrcTemplate);        
     }
-}
-
-function setup() {
-    // We need to determine who is executing this.
-    const output = execSync('whoami');
-    userId = output.toString().replace(/(\r\n|\n|\r)/gm, '');
 }
 
 function createNpmrcs() {
@@ -31,9 +22,9 @@ function createNpmrcs() {
     createDefault();
 
     // load template
-    const template = readFileSync(join(__dirname, 'assets/npmrc-template')).toString();
+    const template = readFileSync(join(__dirname, '../assets/npmrc-template')).toString();
     projects.forEach((prj) => {
-        if (!existsSync(`/Users/${userId}/.npmrcs/${prj.project}`)) {
+        if (!existsSync(`${NPMRC_S}/.npmrcs/${prj.project}`)) {
             // Create an npmrc with the name of the project
             execSync(`npx npmrc -c ${prj.project}`, { stdio: 'inherit' });
             // Now we update the template with the feed.

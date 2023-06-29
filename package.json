@@ -13,10 +13,12 @@
   "author": "Henk van den Brink",
   "dependencies": {
     "typescript": "^5.0.2",
+    "npmrc" : "1.1.1",
     "yargs": "^17.7.2"
   },
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.3.2",
     "@types/yargs": "^17.0.24"
   }
 }

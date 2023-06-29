@@ -1,0 +1,5 @@
+registry = https://registry.npmjs.org/
+
+proxy=http://localhost:8079/
+https-proxy=http://localhost:8079/
+strict-ssl=false
