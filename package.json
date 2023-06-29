@@ -1,0 +1,22 @@
+{
+  "name": "simple-aznpmrcs",
+  "version": "0.0.1",
+  "description": "CLI to help with setting up feeds and authentication for Azure DevOps",
+  "bin": {
+    "sa": "./lib/index.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "author": "Henk van den Brink",
+  "dependencies": {
+    "typescript": "^5.0.2",
+    "yargs": "^17.7.2"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/yargs": "^17.0.24"
+  }
+}
