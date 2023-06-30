@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "dev" : "npm run build && node ./lib/index.js"
   },
   "author": "Henk van den Brink",
   "dependencies": {

@@ -1,0 +1,12 @@
+registry=https://pkgs.dev.azure.com/INGCDaaS/IngOne/_packaging/$NPM_FEED/npm/registry/ 
+                        
+always-auth=true
+
+; begin auth token
+//pkgs.dev.azure.com/INGCDaaS/IngOne/_packaging/$NPM_FEED/npm/registry/:username=INGCDaaS
+//pkgs.dev.azure.com/INGCDaaS/IngOne/_packaging/$NPM_FEED/npm/registry/:_password=SOME_PASS
+//pkgs.dev.azure.com/INGCDaaS/IngOne/_packaging/$NPM_FEED/npm/registry/:email=npm requires email to be set but doesn't use the value
+//pkgs.dev.azure.com/INGCDaaS/IngOne/_packaging/$NPM_FEED/npm/:username=INGCDaaS
+//pkgs.dev.azure.com/INGCDaaS/IngOne/_packaging/$NPM_FEED/npm/:_password=SOME_PASS
+//pkgs.dev.azure.com/INGCDaaS/IngOne/_packaging/$NPM_FEEDnpm/:email=npm requires email to be set but doesn't use the value
+; end auth token
