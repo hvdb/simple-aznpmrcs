@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "target": "es2022",
+      "module": "CommonJS",
+      "esModuleInterop": false,
+      "resolveJsonModule": true,
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports" : true,
+      "lib": ["dom", "es2022"],
+      "declaration": true,
+      "outDir": "lib",
+      "rootDir": "src",
+      "strict": true,
+      "types": ["node"],
+    },
+    "exclude": [
+      "lib",
+      "node_modules",
+      "src/**/*.spec.ts",
+      "bin"
+    ],
+    "include": [
+      "src", "src/__mocks__"
+    ]
+  }
