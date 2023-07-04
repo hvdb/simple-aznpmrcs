@@ -96,7 +96,7 @@ function updateNpmrcWithNewPat(npmrcName?: string) {
             if (authIdIsThere) {
                 console.debug('AuthorizationID was found, revoke PAT.');
                 // We need to revoke and regenerate
-                const authId = npmrc.substring(npmrc.indexOf('#simple-aznpmrcs#') + 8, npmrc.lastIndexOf('#simple-aznpmrcs#'));
+                const authId = npmrc.substring(npmrc.indexOf('#simple-aznpmrcs#') + 17, npmrc.lastIndexOf('#simple-aznpmrcs#'));
 
                 revokePat(azOrganization, authId)
                 npmrc = npmrc.replace(`#simple-aznpmrcs#${authId}#simple-aznpmrcs#`, '');

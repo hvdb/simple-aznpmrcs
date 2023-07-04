@@ -1,6 +1,6 @@
 {
   "name": "simple-aznpmrcs",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "CLI to help with setting up feeds and authentication for Azure DevOps",
   "bin": {
     "simple-aznpmrcs": "./lib/index.js"
