@@ -43,19 +43,19 @@ feedName = As created.
 
 Example:
 
-`npx simple-aznpmrcs create henkvandenbrink kitchensink npm-feed`
+`npx -y simple-aznpmrcs create henkvandenbrink kitchensink npm-feed`
 
 ### Use
 
 When you have create one or more npmrcs you can easily switch:  
 
-`npx simple-aznpmrcs example-npmrc`
+`npx -y simple-aznpmrcs example-npmrc`
 
 ### Update
 
 For updating you only need to provide the name of the NPMRC that was created earlier.  
 
-`npx simple-aznpmrcs update example-npmrc`
+`npx -y simple-aznpmrcs update example-npmrc`
 
 
 ## Thanks
