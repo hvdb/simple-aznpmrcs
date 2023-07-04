@@ -15,7 +15,7 @@ function useNpmrc(name: string) {
         console.log('Provided NPMRC does not exists yet. Please create it first.');
         throw new Error('Provided NPMRC does not exists yet. Please create it first.');
     }
-    execSync(`npx -y npmrc ${name}`, { stdio: 'inherit' });
+    execSync(`npx npmrc ${name}`, { stdio: 'inherit' });
 }
 
 function createNpmrcs(feed: string, azProject?: string, azOrg?: string, name?: string) {

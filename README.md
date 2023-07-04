@@ -54,7 +54,7 @@ Example:
 
 When you have create one or more npmrcs you can easily switch:  
 
-`npx -y simple-aznpmrcs example-npmrc`
+`npx -y simple-aznpmrcs use example-npmrc`
 
 ### Update
 
