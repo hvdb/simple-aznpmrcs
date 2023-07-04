@@ -51,7 +51,7 @@ steps:
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: |
-      'package.json' 
+      package.json
       assets/**
     targetFolder: $(Build.ArtifactStagingDirectory)/npm
   displayName: 'Copy files'
