@@ -15,7 +15,7 @@ function useNpmrc(name: string) {
         console.log('Provided NPMRC does not exists yet. Please create it first.');
         throw new Error('Provided NPMRC does not exists yet. Please create it first.');
     }
-    execSync(`../../node_modules/.bin/npmrc ${name}`, { stdio: 'inherit' });
+    execSync(`npx -y npmrc ${name}`, { stdio: 'inherit' });
 }
 
 function createNpmrcs(feed: string, azProject?: string, azOrg?: string, name?: string) {
@@ -54,7 +54,7 @@ function createNpmrcs(feed: string, azProject?: string, azOrg?: string, name?: s
 
     if (!fs.existsSync(`${NPMRC_STORE}/${name}`)) {
         // Create an npmrc with the name of the project
-        execSync(`../../node_modules/.bin/npmrc -c ${name}`, { stdio: 'inherit' });
+        execSync(`npx -y npmrc -c ${name}`, { stdio: 'inherit' });
 
         // Now we update the template with the feed.
         let newNpmrc = template.replaceAll('$NPM_FEED', feed);
