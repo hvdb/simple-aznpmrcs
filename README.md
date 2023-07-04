@@ -29,6 +29,8 @@ You can either install it globally `npm install -g simple-aznpmrcs` or use npx `
 You do need to have a 'default' npmrc in which you have the npmjs registry set.  
 If you haven't, you can add this: `npm_config_registry=https://registry.npmjs.org ` before each npx command.  
 
+*note: It currently only works if your feed is 'project scoped' organization scoped will fail.*
+
 ### Create
 
 For creating a NPMRC a few parameters are required: 
