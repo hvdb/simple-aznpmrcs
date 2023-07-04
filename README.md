@@ -1,6 +1,6 @@
 # Simple-aznpmrcs
 
-## Why did I create this
+## Why I created this
 
 Every 30/60/90 days the PAT was expired that was used for installing NPM dependencies.  
 Which meant I needed to login, create a new PAT, covert it to base64, update NPMRC and then I was able to proceed.  
