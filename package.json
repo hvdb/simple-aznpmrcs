@@ -1,14 +1,13 @@
 {
   "name": "simple-aznpmrcs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "CLI to help with setting up feeds and authentication for Azure DevOps",
   "bin": {
     "simple-aznpmrcs": "./lib/index.js"
   },
   "repository": {
     "type": "git",
-    "url1": "ssh://git@ssh.dev.azure.com:v3/henkvandenbrink/kitchensink/hello",
-    "url" :"https://INGCDaaS@dev.azure.com/INGCDaaS/IngOne/_git/P00130-picard-api"
+    "url" : "https://github.com/hvdb/simple-aznpmrcs"
   },
   "main": "index.js",
   "scripts": {
