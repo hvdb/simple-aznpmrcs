@@ -24,7 +24,9 @@ After that you are good to go :-)
 
 ## How to use it
 
-You can either install it globally `npm install -g simple-aznpmrcs` or use npx `npx simple-aznpmrcs` to execute the commands.  
+You can either install it globally `npm install -g simple-aznpmrcs` or use npx `npx -y simple-aznpmrcs` to execute the commands.  
+In the documentation it is expected that you have it installed globally.  
+If you don't want to install it globally, you need to put `npx -y` in front of each command.  
 
 You do need to have a 'default' npmrc in which you have the npmjs registry set.  
 If you haven't, you can add this: `npm_config_registry=https://registry.npmjs.org ` before each npx command.  
@@ -52,27 +54,27 @@ feedName = As created.
 Examples:
 
 Easiest:
-`npx -y simple-aznmprcs create feed-name`
+`simple-aznmprcs create feed-name`
 - This will generate an NPMRC with feed-name, the azure details are retrieved from package.json and current directory name is used as name.  
 
 More detailed:
-`npx -y simple-aznpmrcs create npm-feed henkvandenbrink kitchensink myNpmrc`
+`simple-aznpmrcs create npm-feed henkvandenbrink kitchensink myNpmrc`
 - Here all options are provided and will be used.
 
 ### Switch
 
 When you have create one or more npmrcs you can easily switch: 
 
-`npx -y simple-aznpmrcs example-npmrc`
+`simple-aznpmrcs example-npmrc`
 
 Or if you created the NPMRC with the name of the directory:  
-`npx -t simple-aznpmrcs`  
+`simple-aznpmrcs`  
 
 ### Use
 
 When issuing the `use` command a list of all available NPMRC' are shown and you can select one.  
 
-`npx -y simple-aznpmrcs use`
+`simple-aznpmrcs use`
 
 ### Update
 
@@ -84,11 +86,11 @@ There are three options for updating:
 
 
 Update all npmrcs:  
-`npx -y simple-aznpmrcs update all`  
+`simple-aznpmrcs update all`  
 
 Update provided NPMRC:  
-`npx -y simple-aznpmrcs myNpmrcs`
+`simple-aznpmrcs myNpmrcs`
 
 Update current NPMRC:  
-`npx -y simple-aznpmrcs`
+`simple-aznpmrcs`
 
