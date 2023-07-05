@@ -4,9 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.0] - 2023-07-05
+### Added
+- `List` command to show all available npmrcs
+- `Delete` command to delete one
+- `Use` command that gives a list of all available npmrcs and you can chose which one you want to activate.
+### Changed
+- No stacktrace is shown anymore per default
+- Use can be executed without name, it will default to current working directory name
+- Update can be executed without name, it will default to current working directory name
+### Fixed
+- When calling when no npmrc_store available it will first initialize it.
+
 ## [0.2.4] - 2023-07-04
 ### Added
-- use command
+- Use command
 
 ## [0.2.3] - 2023-07-04
 ### Fixed

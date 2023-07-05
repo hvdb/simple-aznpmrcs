@@ -33,37 +33,62 @@ If you haven't, you can add this: `npm_config_registry=https://registry.npmjs.or
 
 ### Create
 
-For creating a NPMRC a few parameters are required: 
-- azOrganization (first part of url) 
-- azProject (second part of url)
+For creating a NPMRC one parameter is required: 
 - feedName (as available in Artifacts)
-- Optional: name (directory name is used if not provided)
 
-*Note: azOrganization & azProject are optional if repository url is provided in your package.json*
+One that have a default:
+- name (directory name is used if not provided)
+
+And two that are needed but can be retrieved from a different property.
+When `repository.url` is set in the package.json, that one will be used.  
+- azOrganization (first part of Azure DevOps url) 
+- azProject (second part of Azure DevOps url)
 
 Example Azure DevOps url:  `https://dev.azure.com/henkvandenbrink/kitchensink`  
 azOrganization = `henkvandenbrink`  
 azProject = `kitchensink`  
 feedName = As created.
 
-Example:
+Examples:
 
-`npx -y simple-aznpmrcs create henkvandenbrink kitchensink npm-feed`
+Easiest:
+`npx -y simple-aznmprcs create feed-name`
+- This will generate an NPMRC with feed-name, the azure details are retrieved from package.json and current directory name is used as name.  
+
+More detailed:
+`npx -y simple-aznpmrcs create npm-feed henkvandenbrink kitchensink myNpmrc`
+- Here all options are provided and will be used.
+
+### Switch
+
+When you have create one or more npmrcs you can easily switch: 
+
+`npx -y simple-aznpmrcs example-npmrc`
+
+Or if you created the NPMRC with the name of the directory:  
+`npx -t simple-aznpmrcs`  
 
 ### Use
 
-When you have create one or more npmrcs you can easily switch:  
+When issuing the `use` command a list of all available NPMRC' are shown and you can select one.  
 
-`npx -y simple-aznpmrcs use example-npmrc`
+`npx -y simple-aznpmrcs use`
 
 ### Update
 
-For updating you only need to provide the name of the NPMRC that was created earlier.  
+There are three options for updating:
 
-`npx -y simple-aznpmrcs update example-npmrc`
+- All
+- Provide a name
+- Current active npmrc
 
 
-## Thanks
+Update all npmrcs:  
+`npx -y simple-aznpmrcs update all`  
 
-This module uses [npmrc](https://github.com/deoxxa/npmrc) npm module to create and switch the npmrc.  
+Update provided NPMRC:  
+`npx -y simple-aznpmrcs myNpmrcs`
+
+Update current NPMRC:  
+`npx -y simple-aznpmrcs`
 

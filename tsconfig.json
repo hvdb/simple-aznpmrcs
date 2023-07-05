@@ -1,25 +1,32 @@
 {
-    "compilerOptions": {
-      "target": "es2022",
-      "module": "CommonJS",
-      "esModuleInterop": false,
-      "resolveJsonModule": true,
-      "moduleResolution": "node",
-      "allowSyntheticDefaultImports" : true,
-      "lib": ["dom", "es2022"],
-      "declaration": true,
-      "outDir": "lib",
-      "rootDir": "src",
-      "strict": true,
-      "types": ["node"],
-    },
-    "exclude": [
-      "lib",
-      "node_modules",
-      "src/**/*.spec.ts",
-      "bin"
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "CommonJS",
+    "esModuleInterop": false,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "dom",
+      "es2022"
     ],
-    "include": [
-      "src", "src/__mocks__"
-    ]
-  }
+    "declaration": true,
+    "outDir": "lib",
+    "rootDir": "src",
+    "strict": true,
+    "skipLibCheck": true,
+    "types": [
+      "node",
+    ],
+  },
+  "exclude": [
+    "lib",
+    "node_modules",
+    "src/**/*.spec.ts",
+    "bin"
+  ],
+  "include": [
+    "src",
+    "src/__mocks__"
+  ]
+}

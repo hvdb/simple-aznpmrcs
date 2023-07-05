@@ -3,19 +3,38 @@ import * as fs from 'fs';
 import { execSync } from 'child_process';
 import { join, basename, resolve } from 'path';
 import { createPat, revokePat } from './azureDevopsAPI';
+import { NPMRC, NPMRC_STORE, makeStore, switchNpmrc } from './npmrcs/init';
 
-//@ts-ignore
-const NPMRC_STORE = process.env.NPMRC_STORE || join(process.env.HOME || process.env.USERPROFILE, '.npmrcs')
-//@ts-ignore
-const NPMRC = process.env.NPMRC || join(process.env.HOME || process.env.USERPROFILE, '.npmrc')
+function deleteNpmrc(name: string) {
+    console.log('Deleting', name);
+    if (fs.existsSync(`${NPMRC_STORE}/${name}`)) {
+        fs.unlinkSync(`${NPMRC_STORE}/${name}`);
+        console.log(`NPMRC with name ${name} is deleted.`);
+    } else {
+        throw new Error(`Provided npmrc(${name}) does not exist.`);
+    }
+}
 
-function useNpmrc(name: string) {
+function listNpmrcs() {
+    const currentSelectedNpmrc = fs.readlinkSync(NPMRC);
+    fs.readdirSync(NPMRC_STORE).forEach(function (npmrc) {
+        if (npmrc[0] !== '.') {
+            console.log(' %s %s', basename(currentSelectedNpmrc) == npmrc ? '*' : ' ', npmrc)
+        }
+    })
+}
+
+function useNpmrc(name?: string) {
+    if (!name) {
+        // If there is no name we use the current directory name as name.
+        name = basename(resolve());
+    }
 
     if (!fs.existsSync(`${NPMRC_STORE}/${name}`)) {
         console.log('Provided NPMRC does not exists yet. Please create it first.');
         throw new Error('Provided NPMRC does not exists yet. Please create it first.');
     }
-    execSync(`npx npmrc ${name}`, { stdio: 'inherit' });
+    switchNpmrc(name);
 }
 
 function createNpmrcs(feed: string, azProject?: string, azOrg?: string, name?: string) {
@@ -52,10 +71,15 @@ function createNpmrcs(feed: string, azProject?: string, azOrg?: string, name?: s
     // load template for azure
     const template = fs.readFileSync(join(__dirname, '../../assets/npmrc-azure-feeds')).toString();
 
-    if (!fs.existsSync(`${NPMRC_STORE}/${name}`)) {
-        // Create an npmrc with the name of the project
-        execSync(`npx -y npmrc -c ${name}`, { stdio: 'inherit' });
+    if (!fs.existsSync(`${NPMRC_STORE}`)) {
+        // npmrc_store does not exist, we need to create it first.
+        console.log('Initializing NPMRC store and creating default npmrc based on current');
+        makeStore();
+        console.log('Your previous NPMRC is now available under the name: default');
+    }
 
+    if (!fs.existsSync(`${NPMRC_STORE}/${name}`)) {
+        console.log('Creating NPMRC', name);
         // Now we update the template with the feed.
         let newNpmrc = template.replaceAll('$NPM_FEED', feed);
         newNpmrc = newNpmrc.replaceAll('$AZ_PROJECT', azProject);
@@ -64,16 +88,21 @@ function createNpmrcs(feed: string, azProject?: string, azOrg?: string, name?: s
         fs.writeFileSync(`${NPMRC_STORE}/${name}`, newNpmrc);
     }
     updateNpmrcWithNewPat(name);
+    useNpmrc(name);
 }
 
-function updateNpmrcWithNewPat(npmrcName?: string) {
+function updateNpmrcWithNewPat(npmrcName?: string, all?: boolean) {
     // NPMRC file exists let's update it with a new password.
-    let files;
+    let files: string[] = [];
 
-    if (npmrcName) {
+    if (!npmrcName && !all) {
+        const currentSelectedNpmrc = fs.readlinkSync(NPMRC);
+        console.log('Updating currently selected NPMRC', basename(currentSelectedNpmrc));
+        files = [basename(currentSelectedNpmrc)];
+    } else if (npmrcName && !all) {
         console.log('Updating provided npmrc:', npmrcName);
         files = [npmrcName];
-    } else {
+    } else if (all) {
         console.log('Updating all npmrcs');
         files = fs.readdirSync(`${NPMRC_STORE}`);
     }
@@ -128,4 +157,6 @@ export {
     updateNpmrcWithNewPat,
     createNpmrcs,
     useNpmrc,
+    deleteNpmrc,
+    listNpmrcs,
 }
