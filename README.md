@@ -54,27 +54,27 @@ feedName = As created.
 Examples:
 
 Easiest:
-`simple-aznmprcs create feed-name`
+`snmprc create feed-name`
 - This will generate an NPMRC with feed-name, the azure details are retrieved from package.json and current directory name is used as name.  
 
 More detailed:
-`simple-aznpmrcs create npm-feed henkvandenbrink kitchensink myNpmrc`
+`snpmrc create npm-feed henkvandenbrink kitchensink myNpmrc`
 - Here all options are provided and will be used.
 
 ### Switch
 
 When you have create one or more npmrcs you can easily switch: 
 
-`simple-aznpmrcs example-npmrc`
+`snpmrc example-npmrc`
 
 Or if you created the NPMRC with the name of the directory:  
-`simple-aznpmrcs`  
+`snpmrc`  
 
 ### Use
 
 When issuing the `use` command a list of all available NPMRC' are shown and you can select one.  
 
-`simple-aznpmrcs use`
+`snpmrc use`
 
 ### Update
 
@@ -86,11 +86,11 @@ There are three options for updating:
 
 
 Update all npmrcs:  
-`simple-aznpmrcs update all`  
+`snpmrc update all`  
 
 Update provided NPMRC:  
-`simple-aznpmrcs myNpmrcs`
+`snpmrc myNpmrcs`
 
 Update current NPMRC:  
-`simple-aznpmrcs`
+`snpmrc`
 
