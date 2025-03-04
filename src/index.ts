@@ -5,9 +5,7 @@ import { createNpmrcs, deleteNpmrc, listNpmrcs, updateNpmrcWithNewPat, useNpmrc 
 import { readdirSync } from 'fs';
 import { NPMRC_STORE } from './helpers/npmrcs/init';
 
-
 const selectNPMRC = async () => {
-
 
     const files = readdirSync(`${NPMRC_STORE}`);
     let choices: { name: string; value: string; description: string; }[] = [];
@@ -27,14 +25,12 @@ const selectNPMRC = async () => {
     });
 
     try {
-        console.log('ddd', answer)
         useNpmrc(answer);
     } catch (exception) {
-        console.log('d', exception)
+        console.error(exception);
         console.log('Execution failed, please have a look at the error messages and help.');
     }
 };
-
 
 const argv = yargs(process.argv.slice(2))
     //@ts-ignore
